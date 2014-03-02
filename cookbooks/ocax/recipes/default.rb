@@ -109,8 +109,8 @@ mysql_database_user "#{node[:ocax][:mysql_user]}" do
   database_name "#{node[:ocax][:mysql_dbname]}"
   host          'localhost'
   action        [:grant, :query]
-  sql "INSERT INTO user (username, password, salt, email, is_active, is_admin) values (
-    '#{node[:ocax][:adminaccount_username]}', 
+  sql "REPLACE INTO user (id, username, password, salt, email, is_active, is_admin) values (
+    1, '#{node[:ocax][:adminaccount_username]}', 
     MD5('replace_this_salt_hash#{node[:ocax][:adminaccount_password]}'), 
     'replace_this_salt_hash',
     '#{node[:ocax][:adminaccount_email]}',
