@@ -30,6 +30,14 @@ package("php5")
 package("libapache2-mod-php5")
 package("php5-curl")
 package("php5-mysql")
+
+# OCA(x) dependencies
+package("memcached")
+package("php5-memcache")
+package("php-apc")
+package("php5-mcrypt")
+package("php5-imagick")
+package("php5-gd")
 package("unzip")
 
 # Create installation directory
@@ -49,7 +57,7 @@ remote_file node[:ocax][:download_cache] do
   notifies :run, "execute[Unpack ocax]", :immediately
 end
 
-# Unpack OCAX
+# Unpack OCAx
 execute "Unpack ocax" do
   cwd node["ocax"]["installpath"]
   command "tar --strip-components 1 -xzf #{node[:ocax][:download_cache]}"
@@ -94,13 +102,19 @@ mysql_database "#{node[:ocax][:mysql_dbname]}" do
   sql { ::File.open("#{node[:ocax][:installpath]}/schema.sql").read }
 end
 
-# Create user and grant privileges on database, using mysql root account
+# Create mysql ocax-user grant privileges on database, create ocax admin account, using mysql root account
 mysql_database_user "#{node[:ocax][:mysql_user]}" do
   connection    ({:host => 'localhost', :username => 'root', :password => node['mysql']['server_root_password']})
   password      "#{node[:ocax][:mysql_password]}"
   database_name "#{node[:ocax][:mysql_dbname]}"
   host          'localhost'
-  action        :grant
+  action        [:grant, :query]
+  sql "INSERT INTO user (username, password, salt, email, is_active, is_admin) values (
+    '#{node[:ocax][:adminaccount_username]}', 
+    MD5('replace_this_salt_hash#{node[:ocax][:adminaccount_password]}'), 
+    'replace_this_salt_hash',
+    '#{node[:ocax][:adminaccount_email]}',
+    1, 1)"
 end
 
 # Download data common to all Spanish OCMs

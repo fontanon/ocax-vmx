@@ -74,6 +74,9 @@ Y desde nuestra máquina host podemos acceder a OCA(x):
 
 -   http://192.168.56.101
 
+El usuario/contraseña de administrador por defecto es admin/admin. 
+Te recomendamos que lo primero que hagas sea modificarla.
+
 ### Opción 2: OCA(x) en la nube con DigitalOcean
 
 [DigitalOcean](http://digitalocean.com) es un proveedor de servicios *cloud-computing* 
@@ -127,6 +130,9 @@ nuestro recién-construido-entorno
 Y desde nuestra máquina host podemos acceder a los distintos servicios:
 
 -   http://IP-en-digital-ocean
+
+El usuario/contraseña de administrador por defecto es admin/admin. 
+Te recomendamos que lo primero que hagas sea modificarla.
 
 Conozcamos ocax-vmx a fondo
 ---------------------------------
