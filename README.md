@@ -45,21 +45,6 @@ El generador de entornos OCA(x) está basado en
     completa. Lo utilizamos para programar la receta de despliegue de
     [OCA(x)](http://ocax.net/doku.php?id=es:index) y sus dependencias
     
-*Nota*: Existen en internet diversos tutoriales introductorios muy
-útiles para aprender las *basics* de Vagrant y Chef. A continuación
-presentamos algunos de ellos. Para más información consulte la
-documentación oficial.
-    
-**Vagrant**
--   [Cómo instalar y configurar
-    Vagrant](http://codehero.co/como-instalar-y-configurar-vagrant)
-
-**CHEF-solo**
--   [First Steps with
-    CHEF](http://gettingstartedwithchef.com/first-steps-with-chef.html)
--   [Chef-solo quick and easy
-    cookig](http://horewi.cz/chef-solo-quick-and-easy-cooking-for-one.html)
-
 Requisitos previos
 ------------------
 
