@@ -132,7 +132,7 @@ en la [documentación de vagrant-digitalocean](https://github.com/smdahlen/vagra
 **Lanzamos construcción** del entorno OCA(x) en DigitalOcean. ¡Estate atento! En el proceso **se te
 informará de la dirección IP** para tu entorno OCA(x) en DigitalOcean.
 
-    user@host:~/ocax-vmx$ vagrant up
+    user@host:~/ocax-vmx$ vagrant up --provider=digital_ocean
 
 Tras unos 15 minutos, si no hay errores ya podremos acceder por ssh a
 nuestro recién-construido-entorno
