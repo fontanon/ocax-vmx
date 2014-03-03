@@ -60,8 +60,11 @@ OCA(x) en dos sabores: Maquina virtual y en la Nube
 
 ### Opción 1: OCA(x) en una Máquina Virtual (con VirtualBox)
 
-Si tenemos instalado VirtualBox y Vagrant lanzar la construcción del
-entorno OCA(x) sería tan sencillo como ejecutar:
+Con VirtualBox y Vagrant, procedemos a instalar el plugin de omnibus:
+
+    user@host:~/ocax-vmx$ vagrant plugin install vagrant-omnibus
+
+Y ya podemos lanzar la construcción del entorno OCA(x):
 
     user@host:~/ocax-vmx$ vagrant up
 
