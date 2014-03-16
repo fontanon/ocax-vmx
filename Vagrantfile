@@ -61,8 +61,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     override.ssh.private_key_path = '~/.ssh/id_rsa'
     #override.vm.box = 'digital_ocean'
     #override.vm.box_url = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
-    provider.client_id = 'e2198de55f612d89a062b47145b1a7ea'
-    provider.api_key = '3e31f3349f03295ff863a1b649213f24'
+    provider.client_id = ''
+    provider.api_key = ''
   end
 
   # Enable provisioning with chef server:
