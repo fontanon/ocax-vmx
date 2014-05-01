@@ -2,14 +2,14 @@
 # WARNING: Make sure this ip is correctly set on Vagrantfile private network param too!
 default[:ocax][:host_ip] = "192.168.56.101"
 
-# Default hostname. You should set this on your host machine /etc/hosts file
+# Default hostname. You should set this on your host machine /etc/hosts file too.
 default[:ocax][:host_name] = "ocax.dev"
 
-# OCAx source files, installation path, virtualhostname ...
+# OCAx virtualhostname.
 default[:ocax][:virtualhost_name] = "node"
-default[:ocax][:download_cache] = "/tmp/ocax-1.1.2.tar.gz"
-default[:ocax][:download_url] = "http://ocax.net/download/ocax-1.1.2.tar.gz"
-default[:ocax][:download_checksum] = "0f8f132fc274ccfe061ebd5796a094fed90456f1c954084aa022e6f4fc9d2eda" # SHA256
+
+# OCAx download and install paths
+default[:ocax][:gitrepo_uri] = "https://git.gitorious.org/ocax/ocax.git"
 default[:ocax][:installpath] = "/var/www/ocax"
 
 # Yii framework (OCAx dependency)

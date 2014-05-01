@@ -40,28 +40,12 @@ package("php5-imagick")
 package("php5-gd")
 package("unzip")
 
-# Create installation directory
-directory node["ocax"]["installpath"] do
-  owner "root"
-  group "root"
-  mode "0755"
-  action :create
-  recursive true
-end
-
-# Download and call unpack, only on the first provision
-remote_file node[:ocax][:download_cache] do
-  source node[:ocax][:download_url]
-  mode 00644
-  checksum node[:ocax][:download_checksum]
-  notifies :run, "execute[Unpack ocax]", :immediately
-end
-
-# Unpack OCAx
-execute "Unpack ocax" do
-  cwd node["ocax"]["installpath"]
-  command "tar --strip-components 1 -xzf #{node[:ocax][:download_cache]}"
-  action :nothing
+# Download the project (or sync last changes)
+package('git-core')
+git "#{node[:ocax][:installpath]}" do
+  repository "#{node[:ocax][:gitrepo_uri]}"
+  reference "master"
+  action :sync
 end
 
 # Download Yii framework latest (ocax dependency)
@@ -130,11 +114,6 @@ mysql_database "#{node[:ocax][:mysql_dbname]}" do
   action [:nothing, :query]
   sql { ::File.open("#{node[:ocax][:spanishbudget_download_cache]}").read }
 end
-
-#execute "Import spanish budget" do
-#  command "mysql -u#{node[:ocax][:mysql_user]} -p#{node[:ocax][:mysql_password]} #{node[:ocax][:mysql_dbname]} < }"
-#  action :nothing
-#end
 
 # Create config file
 template "#{node[:ocax][:installpath]}/protected/config/main.php" do
